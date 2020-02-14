@@ -14,27 +14,7 @@
                     @csrf
                     @method('put')
                     <div class="card-body">
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" value="{{ $user->name }}" name="name" class="form-control" id="name" placeholder="Enter user name">
-                            @error('name')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Email address</label>
-                            <input type="email" value="{{ $user->email }}" name="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-                            @error('email')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Phone</label>
-                            <input type="text" value="{{ $user->phone }}" name="phone" class="form-control" id="phone" placeholder="Enter phone number">
-                            @error('phone')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                            @enderror
-                        </div>
+                        @include('admin.user._form')
                     </div>
                     <!-- /.card-body -->
 
