@@ -16,11 +16,10 @@ class UserController extends Controller
     public function index()
     {
         $data['title'] = 'List of users';
-        $data['users'] = User::paginate(1);
-        $data['serial'] = 1;
+        $data['users'] = User::paginate(3);
+        $data['serial'] = ($data['users']->currentPage() != 1)?($data['users']->perPage()*($data['users']->currentPage()-1))+1:1;
         return view('admin.user.index',$data);
     }
-
     /**
      * Show the form for creating a new resource.
      *
