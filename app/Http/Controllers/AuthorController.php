@@ -45,7 +45,12 @@ class AuthorController extends Controller
             'phone' => 'required|unique:authors',
             'status' => 'required',
         ]);
-        Author::create($request->all());
+
+        $data = $request->all();
+        if($request->photo) {
+            $data['photo'] = $this->fileUpload($request->photo);
+        }
+        Author::create($data);
         session()->flash('message','Author created successfully');
         return redirect()->route('author.index');
     }
@@ -89,11 +94,21 @@ class AuthorController extends Controller
             'phone' => 'required|unique:authors,phone,'.$author->id,
             'status' => 'required',
         ]);
-        $author->update($request->all());
+        $data= $request->all();
+        if($request->photo) {
+            $data['photo'] = $this->fileUpload($request->photo);
+        }
+        $author->update($data);
         session()->flash('message','Author updated successfully');
         return redirect()->route('author.index');
     }
-
+    private function fileUpload($img)
+    {
+        $path = 'images/authors';
+        $img->move($path, $img->getClientOriginalName());
+        $fullPath = $path . '/' . $img->getClientOriginalName();
+        return $fullPath;
+    }
     /**
      * Remove the specified resource from storage.
      *
