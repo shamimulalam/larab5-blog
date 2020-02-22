@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Author;
+use Illuminate\Http\File;
 use Illuminate\Http\Request;
 
 class AuthorController extends Controller
@@ -63,7 +64,9 @@ class AuthorController extends Controller
      */
     public function show(Author $author)
     {
-        //
+        $data['title'] = 'Author Details';
+        $data['author'] = $author;
+        return view('admin.author.show',$data);
     }
 
     /**
@@ -97,6 +100,9 @@ class AuthorController extends Controller
         $data= $request->all();
         if($request->photo) {
             $data['photo'] = $this->fileUpload($request->photo);
+            if(file_exists($author->photo)){
+                unlink($author->photo);
+            }
         }
         $author->update($data);
         session()->flash('message','Author updated successfully');
@@ -117,6 +123,9 @@ class AuthorController extends Controller
      */
     public function destroy(Author $author)
     {
+        if($author->photo && file_exists($author->photo)){
+            unlink($author->photo);
+        }
         $author->delete();
         session()->flash('message','Author deleted successfully');
         return redirect()->route('author.index');
