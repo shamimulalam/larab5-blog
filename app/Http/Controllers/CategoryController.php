@@ -15,7 +15,7 @@ class CategoryController extends Controller
     public function index()
     {
         $data['title'] = 'List of categories';
-        $data['categories'] = Category::paginate(3);
+        $data['categories'] = Category::with('posts')->paginate(3);
         $data['serial'] = managePaginationSerial($data['categories']);
 //        $data['serial'] = ($data['categories']->currentPage() != 1)?($data['categories']->perPage()*($data['categories']->currentPage()-1))+1:1;
         return view('admin.category.index',$data);

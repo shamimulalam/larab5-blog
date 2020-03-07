@@ -33,7 +33,7 @@
                             <tr>
                                 <td>{{ $serial++ }}</td>
                                 <td>{{ $post->title }}</td>
-                                <td>{{ $post->category_id }}</td>
+                                <td>{{ $post->category->name }}</td>
                                 <td>{{ $post->status }}</td>
                                 <td>{{ $post->is_featured==1?'Yes':'No' }}</td>
                                 <td>

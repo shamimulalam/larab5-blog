@@ -17,7 +17,7 @@ class PostController extends Controller
     public function index()
     {
         $data['title'] = 'List of all posts';
-        $data['posts'] = Post::orderBy('id','DESC')->paginate(10);
+        $data['posts'] = Post::with('category')->orderBy('id','DESC')->paginate(10);
         $data['serial'] = managePaginationSerial($data['posts']);
         return view('admin.post.index',$data);
     }
@@ -73,10 +73,10 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show($id)
     {
         $data['title'] = 'Post Details';
-        $data['post'] = $post;
+        $data['post'] = Post::with('category','author')->findOrFail($id);
         return view('admin.post.show',$data);
     }
 

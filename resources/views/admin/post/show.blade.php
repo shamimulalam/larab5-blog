@@ -27,15 +27,15 @@
                                 </tr>
                                 <tr>
                                     <td>Is Featured</td>
-                                    <td>{{ $post->is_featured }}</td>
+                                    <td>{{ $post->is_featured==1?'Yes':'No' }}</td>
                                 </tr>
                                 <tr>
                                     <td>Category</td>
-                                    <td>{{ $post->category_id }}</td>
+                                    <td>{{ $post->category->name }}</td>
                                 </tr>
                                 <tr>
                                     <td>Author</td>
-                                    <td>{{ $post->author_id }}</td>
+                                    <td>{{ $post->author->name }}</td>
                                 </tr>
                             </table>
                         </div>
