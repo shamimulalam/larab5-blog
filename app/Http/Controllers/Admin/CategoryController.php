@@ -87,7 +87,12 @@ class CategoryController extends Controller
             'name' => 'required',
             'status' => 'required'
         ]);
-        $category->update($request->all());
+        $data = $request->all();
+        if(!$request->has('is_featured'))
+        {
+            $data['is_featured'] = 0;
+        }
+        $category->update($data);
         session()->flash('message','Category updated successfully');
         return redirect()->route('category.index');
     }

@@ -123,6 +123,14 @@ class PostController extends Controller
         {
             $data['is_featured'] = 0;
         }
+        if(!$request->has('is_trending'))
+        {
+            $data['is_trending'] = 0;
+        }
+        if(!$request->has('is_editors_pick'))
+        {
+            $data['is_editors_pick'] = 0;
+        }
         $post->update($data);
         session()->flash('message','Post updated successfully');
         return redirect()->route('post.index');

@@ -47,6 +47,16 @@
     <label for="is_featured">Yes</label>
 </div>
 <div class="form-group">
+    <label for="is_trending">Is Trending ?</label>
+    <input id="is_trending" type="checkbox" @if(old('is_trending',isset($post)?$post->is_trending:null) == 1) checked @endif name="is_trending" value="1">
+    <label for="is_trending">Yes</label>
+</div>
+<div class="form-group">
+    <label for="is_editors_pick">Is Editors Pick ?</label>
+    <input id="is_editors_pick" type="checkbox" @if(old('is_editors_pick',isset($post)?$post->is_editors_pick:null) == 1) checked @endif name="is_editors_pick" value="1">
+    <label for="is_editors_pick">Yes</label>
+</div>
+<div class="form-group">
     <label for="status">Status</label>
     <br>
     <input id="published" type="radio" @if(old('status',isset($post)?$post->status:null) == 'Published') checked @endif name="status" value="Published">

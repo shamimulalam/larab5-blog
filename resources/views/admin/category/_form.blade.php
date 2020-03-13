@@ -6,6 +6,11 @@
     @enderror
 </div>
 <div class="form-group">
+    <label for="is_featured">Is Featured ?</label>
+    <input id="is_featured" type="checkbox" @if(old('is_featured',isset($category)?$category->is_featured:null) == 1) checked @endif name="is_featured" value="1">
+    <label for="is_featured">Yes</label>
+</div>
+<div class="form-group">
     <label for="status">Status</label>
     <br>
     <input id="active" type="radio" @if(old('status',isset($category)?$category->status:null) == 'Active') checked @endif name="status" value="Active">

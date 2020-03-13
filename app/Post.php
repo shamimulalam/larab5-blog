@@ -13,6 +13,8 @@ class Post extends Model
         'details',
         'image',
         'is_featured',
+        'is_trending',
+        'is_editors_pick',
         'status',
         'total_read',
     ];
