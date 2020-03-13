@@ -11,7 +11,7 @@
 |
 */
 
-//Route::get('/', );
+Route::get('/', 'HomeController@index');
 Route::auth();
 Route::group(['middleware'=>'auth','namespace'=>'Admin'],function(){
     Route::get('dashboard',function (){
