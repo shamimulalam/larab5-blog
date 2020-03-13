@@ -11,11 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', );
 Route::auth();
-Route::group(['middleware'=>'auth'],function(){
+Route::group(['middleware'=>'auth','namespace'=>'Admin'],function(){
     Route::get('dashboard',function (){
         return view('admin.dashboard',['title'=>'Dashboard']);
     })->name('dashboard');

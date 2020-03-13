@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Author;
+use App\Http\Controllers\Controller;
 use App\Post;
 use App\Category;
 use Illuminate\Http\Request;
