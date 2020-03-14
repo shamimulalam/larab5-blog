@@ -9,8 +9,9 @@ class PostController extends Controller
 {
     public function show($id)
     {
+        Post::findOrFail($id)->increment('total_read');
         $data['post'] = Post::with('author','category')->findOrFail($id);
-        $data['post']->increment('total_read');
+        $data['popular_posts'] = Post::popular();
         return view('front.post.show',$data);
     }
 }
