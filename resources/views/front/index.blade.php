@@ -50,8 +50,8 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="post-entry-1">
-                                <a href="post-single.html"><img src={{ asset($editors_picks[1]->image) }} alt="Image" class="img-fluid"></a>
-                                <h2><a href="blog-single.html">{{ $editors_picks[1]->title }}</a></h2>
+                                <a href="{{ route('home.post.show',$editors_picks[1]->id) }}"><img src={{ asset($editors_picks[1]->image) }} alt="Image" class="img-fluid"></a>
+                                <h2><a href="{{ route('home.post.show',$editors_picks[1]->id) }}">{{ $editors_picks[1]->title }}</a></h2>
                                 <p>{{ substr($editors_picks[1]->details,0,150) }}</p>
                                 <div class="post-meta">
                                     <span class="d-block"><a href="#">{{ $editors_picks[1]->author->name }}</a> in <a href="#">{{ $editors_picks[1]->category->name }}</a></span>
@@ -65,7 +65,7 @@
                                     <div class="post-entry-2 d-flex bg-light">
                                         <div class="thumbnail" style="background-image: url({{ asset($post->image) }})"></div>
                                         <div class="contents">
-                                            <h2><a href="blog-single.html">{{ $post->title }}</a></h2>
+                                            <h2><a href="{{ route('home.post.show',$post->id) }}">{{ $post->title }}</a></h2>
                                             <div class="post-meta">
                                                 <span class="d-block"><a href="#">{{ $post->author->name }}</a> in <a href="#">{{ $post->category->name }}</a></span>
                                                 <span class="date-read">{{ date('M d',strtotime($post->created_at)) }} <span class="mx-1">&bullet;</span> {{ $post->total_read }} <span class="icon-star2"></span></span>
@@ -98,7 +98,7 @@
                 <div class="img-bg" style="background-image: url({{ asset($editors_picks[0]->image) }})"></div>
                 <div class="contents">
                     <span class="caption">Editor's Pick</span>
-                    <h2><a href="blog-single.html">{{ $editors_picks[0]->title }}</a></h2>
+                    <h2><a href="{{ route('home.post.show',$editors_picks[0]->id) }}">{{ $editors_picks[0]->title }}</a></h2>
                     <p class="mb-3">{{ substr($editors_picks[0]->details,0,300) }}</p>
                     <div class="post-meta">
                         <span class="d-block"><a href="#">{{ $editors_picks[0]->author->name }}</a> in <a href="#">{{ $editors_picks[0]->category->name }}</a></span>
@@ -121,7 +121,7 @@
                                 <div class="post-entry-2 d-flex">
                                     <div class="thumbnail" style="background-image: url({{ asset($post->image) }})"></div>
                                     <div class="contents">
-                                        <h2><a href="blog-single.html">{{ $post->title }}</a></h2>
+                                        <h2><a href="{{ route('home.post.show',$post->id) }}">{{ $post->title }}</a></h2>
                                         <p class="mb-3">{{ substr($post->details,0,150) }}</p>
                                         <div class="post-meta">
                                             <span class="d-block"><a href="#">{{ $post->author->name }}</a> in <a href="#">{{ $post->category->name }}</a></span>
@@ -147,7 +147,7 @@
                         <div class="post-entry-2 d-flex">
                             <div class="thumbnail order-md-2" style="background-image: url({{ asset($post->image) }})"></div>
                             <div class="contents order-md-1 pl-0">
-                                <h2><a href="blog-single.html">{{ $post->title }}</a></h2>
+                                <h2><a href="{{ route('home.post.show',$post->id) }}">{{ $post->title }}</a></h2>
                                 <p class="mb-3">{{ substr($post->details,0,150) }}</p>
                                 <div class="post-meta">
                                     <span class="d-block"><a href="#">{{ $post->author->name }}</a> in <a href="#">{{ $post->category->name }}</a></span>

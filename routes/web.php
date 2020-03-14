@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'HomeController@index');
+Route::get('{id}/details', 'PostController@show')->name('home.post.show');
 Route::auth();
 Route::group(['middleware'=>'auth','namespace'=>'Admin'],function(){
     Route::get('dashboard',function (){
